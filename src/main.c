@@ -67,6 +67,24 @@ void draw_line(t_game *game, int sx, int sy, int ex, int ey, int color)
 	}
 }
 
+void draw_rect(t_game *game, int sx, int sy, int len_x, int len_y, int color)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (i < len_x)
+	{
+		j = 0;
+		while (j < len_y)
+		{
+			draw_pixel(game, sx + i, sy + j, color);
+			j++;
+		}
+		i++;
+	}
+}
+
 int main(void)
 {
 	t_game game;
@@ -81,7 +99,9 @@ int main(void)
 		printf("\n");
 	}
 
-	draw_line(&game, 100, 200, 100, 800, 0x00FF0000);
+	// draw_line(&game, 100, 100, 200, 400, 0x00FF0000);
+	draw_rect(&game, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 2, 0x0087cefa);
+	draw_rect(&game, 0, WINDOW_HEIGHT / 2, WINDOW_WIDTH, WINDOW_HEIGHT / 2, 0x008b4513);
 	mlx_put_image_to_window(game.mlx, game.win, game.data.img, 0, 0);
 	mlx_loop(game.mlx);
 }
