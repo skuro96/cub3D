@@ -12,6 +12,10 @@
 #define WINDOW_WIDTH MAP_COLS * TILE_SIZE
 #define WINDOW_HEIGHT MAP_ROWS * TILE_SIZE
 
+#define EVENT_KEY_PRESS 2
+
+#define KEY_ESC 53
+
 typedef struct	s_data
 {
 	void	*img;

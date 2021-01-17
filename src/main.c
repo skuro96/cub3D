@@ -85,6 +85,21 @@ void draw_rect(t_game *game, int sx, int sy, int len_x, int len_y, int color)
 	}
 }
 
+int deal_key(int keycode)
+{
+	if (keycode == KEY_ESC)
+		exit(0);
+	return (0);
+}
+
+int main_loop(t_game *game)
+{
+	draw_rect(game, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 2, 0x0087cefa);
+	draw_rect(game, 0, WINDOW_HEIGHT / 2, WINDOW_WIDTH, WINDOW_HEIGHT / 2, 0x008b4513);
+	mlx_put_image_to_window(game->mlx, game->win, game->data.img, 0, 0);
+	return (0);
+}
+
 int main(void)
 {
 	t_game game;
@@ -99,9 +114,7 @@ int main(void)
 		printf("\n");
 	}
 
-	// draw_line(&game, 100, 100, 200, 400, 0x00FF0000);
-	draw_rect(&game, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT / 2, 0x0087cefa);
-	draw_rect(&game, 0, WINDOW_HEIGHT / 2, WINDOW_WIDTH, WINDOW_HEIGHT / 2, 0x008b4513);
-	mlx_put_image_to_window(game.mlx, game.win, game.data.img, 0, 0);
+	mlx_hook(game.win, EVENT_KEY_PRESS, 0, &deal_key, &game);
+	mlx_loop_hook(game.mlx, &main_loop, &game);
 	mlx_loop(game.mlx);
 }
