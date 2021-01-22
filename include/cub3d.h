@@ -5,6 +5,9 @@
 #include <math.h>
 #include <mlx.h>
 
+#include "libft.h"
+#include "utils.h"
+
 #define TILE_SIZE 32
 #define MAP_ROWS 11
 #define MAP_COLS 15
